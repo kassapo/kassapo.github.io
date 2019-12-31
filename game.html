@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Main</title>
+  <link rel="stylesheet" href="game.css">
+  <script src="game.js"></script>
+</head>
+<body>
+  <pre id="elm"></pre>
+  <script>
+    var app = Elm.Main.init({node: document.getElementById('elm')});
+    console.log(app);
+    app.ports.send.subscribe(function(data) {
+      console.log('from elm: ' + data);
+    });
+    app.ports.receive.send('42');
+    console.log('to elm: 42');
+  </script>
+</body>
+</html>
